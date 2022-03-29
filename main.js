@@ -41,6 +41,8 @@ function RandomNumber(){
     console.log("정답",answerNum);
 }
 
+
+
 //게임시작
 function play(){
 
@@ -63,13 +65,16 @@ function play(){
     chanceArea.textContent = `남은기회: ${chances}번`;
 
     //유저가 랜덤번호를 맞추는 과정
-    if(userValue>answerNum){
-        resultArea.textContent = "Down!!!";
-    }else if(userValue<answerNum){
-        resultArea.textContent = "Up!!!";
+    if(userValue<answerNum){
+        resultArea.textContent = "너무 낮아!! 올려!! UP!";
+        changePic(0);
+    }else if(userValue>answerNum){
+        resultArea.textContent = "너무 높아!! 내려!! DOWN!";
+        changePic(1);
     }else{
-        resultArea.textContent = "정답입니다 ㅊㅋㅊㅋ";
+        resultArea.textContent = "정답입니다!! ㅊㅋㅊㅋ";
         gameOver = true; //기회 다 쓰기 전에 맞춰도 go버튼 안눌리게
+        changePic(2);
     }
 
     //유저가 여태까지 입력한 값을 배열에 저장
@@ -88,6 +93,20 @@ function play(){
     }
 }
 
+//사진 바꾸는 함수
+function changePic(idx){
+    let imgTag = document.getElementById("img-area");
+    if(idx == 0){ //up일때
+        imgTag.setAttribute("src","https://i2.wp.com/i.giphy.com/media/DAHS9fXucRgBO/giphy.gif" );
+    }else if(idx == 1){ //down일때
+        imgTag.setAttribute("src","https://i.gifer.com/ahM.gif");
+    }else{
+        imgTag.setAttribute("src","https://i.pinimg.com/originals/ce/49/13/ce49133a6db6014a67363409ff469952.gif");
+    }
+}
+
+
+
 //리셋
 function reset(){
 
@@ -97,7 +116,7 @@ function reset(){
     gameOver = false;
     playButton.disabled = false;
     chanceArea.textContent = `남은기회: ${chances}번`;
-    resultArea.textContent = "정답을 맞춰보세요";
+    resultArea.textContent = "죽기 싫다면 맞춰라";
     RandomNumber();
 
 }
