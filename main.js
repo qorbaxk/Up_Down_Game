@@ -66,13 +66,13 @@ function play(){
 
     //유저가 랜덤번호를 맞추는 과정
     if(userValue<answerNum){
-        resultArea.textContent = "너무 낮아!! 올려!! UP!";
+        resultArea.textContent = "올려!! UP!";
         changePic(0);
     }else if(userValue>answerNum){
-        resultArea.textContent = "너무 높아!! 내려!! DOWN!";
+        resultArea.textContent = "내려!! DOWN!";
         changePic(1);
     }else{
-        resultArea.textContent = "정답입니다!! ㅊㅋㅊㅋ";
+        resultArea.textContent = "정답!! ㅊㅋㅊㅋ";
         gameOver = true; //기회 다 쓰기 전에 맞춰도 go버튼 안눌리게
         changePic(2);
     }
@@ -83,7 +83,9 @@ function play(){
     
     //기회가 0이 되면 게임오버되게
     if(chances<1){
+        resultArea.textContent = "게임오버~!~!~메롱";
         gameOver = true;
+        changePic(3);
     }
 
     //게임오버 되면 go버튼 안눌리게
@@ -100,8 +102,12 @@ function changePic(idx){
         imgTag.setAttribute("src","https://i2.wp.com/i.giphy.com/media/DAHS9fXucRgBO/giphy.gif" );
     }else if(idx == 1){ //down일때
         imgTag.setAttribute("src","https://i.gifer.com/ahM.gif");
-    }else{
+    }else if(idx == 2){ //정답일때
         imgTag.setAttribute("src","https://i.pinimg.com/originals/ce/49/13/ce49133a6db6014a67363409ff469952.gif");
+    }else if(idx == 3){ //게임오버일때
+        imgTag.setAttribute("src","https://media4.giphy.com/media/eJ4j2VnYOZU8qJU3Py/giphy.gif");
+    }else{ //리셋시
+        imgTag.setAttribute("src","https://blog.kakaocdn.net/dn/bG13CL/btq3GF7nKyH/MR6SQ3VAds7xYgWUdP5Ddk/img.gif");
     }
 }
 
@@ -117,6 +123,7 @@ function reset(){
     playButton.disabled = false;
     chanceArea.textContent = `남은기회: ${chances}번`;
     resultArea.textContent = "죽기 싫다면 맞춰라";
+    changePic(4);
     RandomNumber();
 
 }
