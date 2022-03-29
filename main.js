@@ -83,7 +83,7 @@ function play(){
     
     //기회가 0이 되면 게임오버되게
     if(chances<1){
-        resultArea.textContent = "게임오버~!~!~메롱";
+        resultArea.textContent = `게임오버~! 정답은 ${answerNum}!`;
         gameOver = true;
         changePic(3);
     }
