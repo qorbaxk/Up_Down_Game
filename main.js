@@ -71,7 +71,7 @@ function play(){
     }else if(userValue>answerNum){
         resultArea.textContent = "내려!! DOWN!";
         changePic(1);
-    }else{
+    }else if(userValue=answerNum){
         resultArea.textContent = "정답!! ㅊㅋㅊㅋ";
         gameOver = true; //기회 다 쓰기 전에 맞춰도 go버튼 안눌리게
         changePic(2);
@@ -79,10 +79,12 @@ function play(){
 
     //유저가 여태까지 입력한 값을 배열에 저장
     history.push(userValue); 
+    
+    
 
     
     //기회가 0이 되면 게임오버되게
-    if(chances<1){
+    if(chances<1 && userValue!=answerNum){
         resultArea.textContent = `게임오버~! 정답은 ${answerNum}!`;
         gameOver = true;
         changePic(3);
@@ -119,6 +121,7 @@ function reset(){
     //input창 정리
     userInput.value = "";
     chances = 5;
+    history.length = 0;
     gameOver = false;
     playButton.disabled = false;
     chanceArea.textContent = `남은기회: ${chances}번`;
