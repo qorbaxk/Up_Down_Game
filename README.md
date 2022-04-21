@@ -4,7 +4,7 @@
 **Up & Down 으로 랜덤 숫자를 맞추는 게임입니다.**  
 술자리에서 재미로 사용할 수 있도록 만들었습니다.
 
-링크 >> https://qorbaxk-upndowngame.netlify.app/
+데모 >> https://qorbaxk-upndowngame.netlify.app/
 
 ***
 ## 기능
